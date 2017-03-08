@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: black;
+}
+/* Tile styling */
+.tiles-container{
+  width: 100vw;
+  height: 100vh;
+}
+.tile{
+  width: 50vw;
+  height: 50vh;
+  float: left;
+  cursor: pointer;
+  opacity: .8;
+}
+
+#green{
+  background: rgb(65,210,81);
+}
+#red{
+  background: rgb(249,58,30);
+}
+#yellow{
+  background: rgb(255,246,45);
+}
+#blue{
+  background: rgb(0,138,239);
+}
+
+/* Console styling */
+#console{
+  width: 300px;
+  height: 300px;
+  background: #333;
+  position: absolute;
+  top: calc(50vh - 150px);
+  left: calc(50vw - 150px);
+  border-radius: 150px;
+  box-shadow: inset 0 0 10px 5px rgba(0,0,0,.5);
+}
+
+#display{
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  background: black;
+  padding: 5px;
+  color: white;
+  margin-top: 100px;
+  font-size: 28px;
+  box-shadow: inset 0 0 4px 2px rgba(50,50,50,.5);
+  border-radius: 4px;
+  font-family: 'VT323', monospace;
+}
+
+.btns{
+  width: 150px;
+  margin: 30px auto;
+}
+
+.btn{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+  box-sizing: border-box;
+  padding: 20px 0px;
+  text-align: center;
+  box-shadow: 0 0 4px 2px rgba(0,0,0,0.5);
+  float: left;
+  cursor: pointer;
+}
+.btn:active{
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.4);
+}
+
+#start{
+  background: rgb(0,138,239);
+}
+
+#strict{
+  background: rgb(249,58,30);
+  float: right;
+}
