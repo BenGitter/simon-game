@@ -6,6 +6,7 @@ let SimonGame = (function(){
   let $display = document.getElementById("display");
   let $tiles = document.querySelectorAll(".tiles-container .tile");
   let $tilesContainer = document.querySelector(".tiles-container");
+  let $audioElems = document.querySelectorAll("audio");
 
   // Other variables
   let gameStarted = false;
@@ -14,7 +15,7 @@ let SimonGame = (function(){
   let winningLevel = 19;
   let outputArray = [];
   let allowInput = false;
-
+  let strictMode = false;
 
   function init(){
     events();
@@ -23,11 +24,7 @@ let SimonGame = (function(){
   function events(){
     // #start eventhandler
     $start.addEventListener("click", function(e){
-      if(gameStarted){
-        reset();
-      }else{
-        startGame();
-      }
+      startGame();
     });
 
     // .tile eventhandler
@@ -35,6 +32,17 @@ let SimonGame = (function(){
       if(e.target.classList.contains("tile") && allowInput){
         userInput(e.target.id);
       }
+    });
+
+    // #strict eventhandler
+    $strict.addEventListener("click", function(){
+      strictMode = !strictMode;
+      if(strictMode){
+        $strict.style.boxShadow = "0 0 5px 7px rgba(249,58,30,.5)";
+      }else{
+        $strict.style.boxShadow = "";
+      }
+      
     });
   }
   
@@ -57,8 +65,15 @@ let SimonGame = (function(){
 
     if(outputArray[userInputLevel] == colorNumber){
       console.log("CORRECT");
- 
+      
+      $audioElems[colorNumber].play();
+
       if(userInputLevel === level){
+        if(level == winningLevel){
+          $display.innerHTML = "You won!";
+          allowInput = false;
+          return true;
+        }
         level++;
         userInputLevel = 0;
         nextSequence();
@@ -67,8 +82,14 @@ let SimonGame = (function(){
       }
 
     }else{
-      $display.innerHTML = "ERROR";
+      $display.innerHTML = "Wrong";
+      if(strictMode){
+        $display.innerHTML = "You lost!";
+        allowInput = false;
+        return false;
+      }
       setTimeout(function(){
+        userInputLevel = 0;
         nextSequence();
       },1000);
     }
@@ -89,6 +110,7 @@ let SimonGame = (function(){
 
       setTimeout(function(){
         $tiles[outputArray[count]].classList = "tile highlighted";
+        $audioElems[outputArray[count]].play();
       }.bind(count),100);
       
 
@@ -106,13 +128,24 @@ let SimonGame = (function(){
   }
 
   function startGame(){
-    $display.innerHTML = "Level: " + (level+1);
+    level = 0;
+    userInputLevel = 0;
+    outputArray = [];
+    allowInput = false;
+
+    $display.innerHTML = "Starting...";
+
     gameStarted = true;
     for(let i = 0; i <= winningLevel; i++){
       outputArray[i] = Math.floor(Math.random()*4);
     }
     console.log(outputArray);
-    nextSequence();
+
+    setTimeout(function(){
+      $display.innerHTML = "Level: " + (level+1);
+      nextSequence();
+    }, 1500);
+    
   }
 
   function reset(){
