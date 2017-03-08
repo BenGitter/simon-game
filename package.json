@@ -1,0 +1,19 @@
+{
+  "name": "simon-game",
+  "version": "1.0.0",
+  "description": "FCC Project: A simple simon game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenGitter/simon-game.git"
+  },
+  "author": "Benjamin van Zwienen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenGitter/simon-game/issues"
+  },
+  "homepage": "https://github.com/BenGitter/simon-game#readme"
+}
