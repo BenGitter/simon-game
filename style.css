@@ -17,8 +17,15 @@ body{
   height: 50vh;
   float: left;
   cursor: pointer;
-  opacity: .8;
+  opacity: .7;
 }
+
+.tile.highlighted{
+  animation-name: highlight;
+  animation-duration: .7s;
+  animation-iteration-count: 1; 
+}
+
 .tile:active{
   opacity: .9;
 }
@@ -34,6 +41,18 @@ body{
 }
 #blue{
   background: rgb(0,138,239);
+}
+
+@keyframes highlight{
+  0%{
+    opacity: 0.7;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.7;
+  }
 }
 
 /* Console styling */
