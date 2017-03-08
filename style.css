@@ -5,6 +5,7 @@ body{
   padding: 0;
   font-family: sans-serif;
   background: black;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
 }
 /* Tile styling */
 .tiles-container{
@@ -17,6 +18,9 @@ body{
   float: left;
   cursor: pointer;
   opacity: .8;
+}
+.tile:active{
+  opacity: .9;
 }
 
 #green{
@@ -56,6 +60,7 @@ body{
   box-shadow: inset 0 0 4px 2px rgba(50,50,50,.5);
   border-radius: 4px;
   font-family: 'VT323', monospace;
+  cursor: default;
 }
 
 .btns{
@@ -86,4 +91,16 @@ body{
 #strict{
   background: rgb(249,58,30);
   float: right;
+}
+
+/* No select styling */
+/* http://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
